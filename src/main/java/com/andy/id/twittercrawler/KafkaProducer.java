@@ -115,7 +115,8 @@ public class KafkaProducer {
 				 "#westham","#westhamunited", "#westhamunitedfc", "#whu", "#whufc","#westhamfamily", "#whtid", "#comeonwestham", "#comeonyouirons", "#coyi", "#comeonwestham", "#gowestham","#whufcfamily"};
 		 
 		 final List<String[]> hashtags = new ArrayList<String[]>();
-		 hashtags.add(arsenal);hashtags.add(astonvilla); hashtags.add(cardiff);hashtags.add(chelsea);
+		 hashtags.add(arsenal);
+		 hashtags.add(astonvilla); hashtags.add(cardiff);hashtags.add(chelsea);
 		 hashtags.add(crystalpalace);hashtags.add(everton); hashtags.add(fulham);hashtags.add(hull);
 		 hashtags.add(liverpool);hashtags.add(mcity); hashtags.add(munited);hashtags.add(newcastle);
 		 hashtags.add(norwich);hashtags.add(southampton); hashtags.add(stoke);hashtags.add(sunderland);
@@ -132,19 +133,16 @@ public class KafkaProducer {
 			
 			String kafka_message;
 			
-			@Override
 			public void onException(Exception arg0) {
 				// TODO Auto-generated method stub
 				
 			}
 
-			@Override
 			public void onDeletionNotice(StatusDeletionNotice arg0) {
 				// TODO Auto-generated method stub
 				
 			}
 
-			@Override
 			public void onStatus(Status status) {
 						
 				if (status.getLang().equals("en")){
@@ -209,19 +207,16 @@ public class KafkaProducer {
 				}				
 			}
 
-			@Override
 			public void onTrackLimitationNotice(int arg0) {
 				// TODO Auto-generated method stub
 				
 			}
 
-			@Override
 			public void onScrubGeo(long arg0, long arg1) {
 				// TODO Auto-generated method stub
 				
 			}
 
-			@Override
 			public void onStallWarning(StallWarning arg0) {
 				// TODO Auto-generated method stub
 				
