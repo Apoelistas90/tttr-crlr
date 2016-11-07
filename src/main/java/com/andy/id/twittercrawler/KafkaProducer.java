@@ -24,6 +24,10 @@ import twitter4j.conf.ConfigurationBuilder;
 
 public class KafkaProducer {
 	
+/*
+ * to test run a local consumer:
+ * ./kafka-console-consumer.sh ec2-52-212-186-139.eu-west-1.compute.amazonaws.com:9092 --topic footy_tweets --from-beginning --zookeeper ec2-52-212-186-139.eu-west-1.compute.amazonaws.com:2181
+ */
 	
 	 public static void main(String[] args) throws TwitterException {
 			
@@ -54,16 +58,16 @@ public class KafkaProducer {
 		 
 		 ConfigurationBuilder cb = new ConfigurationBuilder();
 		 cb.setDebugEnabled(true);
-		 cb.setOAuthConsumerKey("L0LJ9GQb1Q2UdIPY96w3yw");
-		 cb.setOAuthConsumerSecret("r2s6hS709x7gNaIOHzO7mOxaECuRIhapDU0zNo84UTg");
-		 cb.setOAuthAccessToken("199872881-cuNNuDTolVYNlVF4Cv49Bhm4EqC63dXD8S3E8IWD");
-		 cb.setOAuthAccessTokenSecret("0pkRLD9Dg5qPlpAT7PufdGcCQUJyIChbRmLmooNX6BRzk");
+		 cb.setOAuthConsumerKey("");
+		 cb.setOAuthConsumerSecret("");
+		 cb.setOAuthAccessToken("");
+		 cb.setOAuthAccessTokenSecret("");
 		 
 		 TwitterStream twitterStream = new TwitterStreamFactory(cb.build()).getInstance();
 		 
 		 /** Producer properties **/
 		Properties props = new Properties();
-		props.put("metadata.broker.list", "localhost:9092");
+		props.put("metadata.broker.list", "localhost:9092,localhost:9092");
 		props.put("serializer.class", "kafka.serializer.StringEncoder");
 		props.put("request.required.acks", "1");
 			
@@ -182,7 +186,7 @@ public class KafkaProducer {
 					
 					
 					KeyedMessage<String, String> data = 
-							new KeyedMessage<String, String>("kafka.topic", kafka_message);//DataObjectFactory.getRawJSON(status));
+							new KeyedMessage<String, String>("footy_tweets", kafka_message);//DataObjectFactory.getRawJSON(status));
 					producer.send(data);
 					
 					//check if tweet is here
