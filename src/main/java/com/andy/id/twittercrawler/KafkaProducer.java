@@ -26,8 +26,7 @@ public class KafkaProducer {
 	
 	
 	 public static void main(String[] args) throws TwitterException {
-		
-	
+			
 		final String teams[] = new String[20];
 		teams[0] = "arsenal";
 		teams[1] = "astonvilla";
